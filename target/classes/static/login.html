@@ -5,31 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - HMS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      background: linear-gradient(to right, #1e3a8a, #9333ea);
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
 </head>
-<body class="flex items-center justify-center min-h-screen text-white">
-  <div class="glass-card w-full max-w-md p-8 bg-white bg-opacity-10 backdrop-blur-md shadow-lg rounded-lg">
+<body class="bg-gradient-to-br from-blue-900 to-purple-900 text-white min-h-screen flex items-center justify-center font-sans">
+
+  <div class="bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg shadow-lg w-full max-w-md">
+    
+    <!-- Login Heading -->
     <h2 class="text-3xl font-bold text-center text-cyan-300 mb-6">Login</h2>
-    <form method="POST" action="/login" class="space-y-4">
-      <div>
-        <label for="username" class="block text-sm">Username</label>
-        <input type="text" id="username" name="username" required class="input-field"/>
+
+    <!-- Login Form -->
+    <form action="/login" method="post">
+
+      <!-- Role Dropdown -->
+      <div class="mb-4">
+        <label for="role" class="block text-sm font-medium text-white">Select Role</label>
+        <select id="role" name="role" required
+        class="w-full px-4 py-2 rounded bg-yellow-100 text-black border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 backdrop-blur-sm">
+<option value="" disabled selected class="text-gray-300">-- Choose Role --</option>
+  <option value="ADMIN">Admin</option>
+  <option value="PATIENT">Patient</option>
+  <option value="DOCTOR">Doctor</option>
+  <option value="NURSE">Nurse</option>
+  <option value="ACCOUNTANT">Accountant</option>
+  <!-- Add more roles if needed -->
+</select>
+
       </div>
-      <div>
-        <label for="password" class="block text-sm">Password</label>
-        <input type="password" id="password" name="password" required class="input-field"/>
+
+      <!-- Username Field -->
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-medium text-white">Username</label>
+        <input type="text" id="username" name="username" required
+               class="w-full px-4 py-2 rounded bg-white bg-opacity-20 text-white border border-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
       </div>
-      <button type="submit" class="btn btn-primary w-full mt-4">Sign In</button>
-      <p class="text-sm mt-4 text-center text-gray-300">
-        Not registered? <a href="/register.html" class="text-cyan-300 underline">Sign up here</a>
-      </p>
+
+      <!-- Password Field -->
+      <div class="mb-6">
+        <label for="password" class="block text-sm font-medium text-white">Password</label>
+        <input type="password" id="password" name="password" required
+               class="w-full px-4 py-2 rounded bg-white bg-opacity-20 text-white border border-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded transition duration-300">
+        Login
+      </button>
     </form>
   </div>
+
 </body>
 </html>
