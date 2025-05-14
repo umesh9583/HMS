@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - HMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #1e3a8a, #9333ea);
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-white">
+  <div class="glass-card w-full max-w-2xl p-8 bg-white bg-opacity-10 backdrop-blur-md shadow-lg rounded-lg">
+    <h2 class="text-3xl font-bold text-center text-cyan-300 mb-6">Contact Us</h2>
+    <form action="/contact" method="POST" class="space-y-4">
+      <div>
+        <label for="name" class="block text-sm">Your Name</label>
+        <input type="text" id="name" name="name" required class="input-field"/>
+      </div>
+      <div>
+        <label for="email" class="block text-sm">Email</label>
+        <input type="email" id="email" name="email" required class="input-field"/>
+      </div>
+      <div>
+        <label for="message" class="block text-sm">Message</label>
+        <textarea id="message" name="message" rows="4" required class="input-field"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-full mt-4">Send Message</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - HMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #1e3a8a, #9333ea);
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-white">
+  <div class="glass-card w-full max-w-lg p-8 bg-white bg-opacity-10 backdrop-blur-md shadow-lg rounded-lg">
+    <h2 class="text-3xl font-bold text-center text-cyan-300 mb-6">Register</h2>
+    <form method="POST" action="/register" class="space-y-4">
+      <div>
+        <label for="name" class="block text-sm">Name</label>
+        <input type="text" id="name" name="name" required class="input-field"/>
+      </div>
+      <div>
+        <label for="username" class="block text-sm">Username</label>
+        <input type="text" id="username" name="username" required class="input-field"/>
+      </div>
+      <div>
+        <label for="email" class="block text-sm">Email</label>
+        <input type="email" id="email" name="email" required class="input-field"/>
+      </div>
+      <div>
+        <label for="password" class="block text-sm">Password</label>
+        <input type="password" id="password" name="password" required class="input-field"/>
+      </div>
+      <button type="submit" class="btn btn-primary w-full mt-4">Sign Up</button>
+      <p class="text-sm mt-4 text-center text-gray-300">
+        Already have an account? <a href="/login.html" class="text-cyan-300 underline">Login here</a>
+      </p>
+    </form>
+  </div>
+</body>
+</html>

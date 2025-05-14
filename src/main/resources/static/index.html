@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800 text-white font-inter">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 shadow-lg z-50">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-cyan-400 font-poppins">Patil Hospital</h1>
+      <ul class="flex space-x-4">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#dashboard" class="nav-link nav-dashboard">Dashboard</a></li>
+        <li><a href="register.html" class="nav-link nav-register">Register</a></li>
+        <li><a href="login.html" class="nav-link nav-schedule">Login</a></li>
+        <li><a href="contact.html" class="nav-link nav-edit">Contact Us</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-28 pb-20 px-4">
+    <!-- Hero Section -->
+    <section id="hero" class="text-center mb-12">
+      <h2 class="text-5xl font-bold text-cyan-300 animate-fade-in">Welcome to HMS</h2>
+      <p class="text-xl mt-4 animate-fade-in-delay">Manage patients, doctors, appointments, and more with ease.</p>
+      <div class="mt-8">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dPtUMhbjP28?si=P9Ivx2SFj2WU2qWE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="w-full max-w-6xl mx-auto my-12">
+      <div class="relative overflow-hidden rounded-lg shadow-lg">
+        <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+          <img src="https://images.pexels.com/photos/3769151/pexels-photo-3769151.jpeg?auto=compress&cs=tinysrgb&w=720&h=480&dpr=2" class="w-full object-cover" />
+          <img src="https://images.pexels.com/photos/5215013/pexels-photo-5215013.jpeg?auto=compress&cs=tinysrgb&w=720&h=480&dpr=2" class="w-full object-cover" />
+          
+          <img src="https://plus.unsplash.com/premium_photo-1664475477169-46b784084d4e?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1517120026326-d87759a7b63b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1601841197690-6f0838bdb005?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full object-cover" />
+          <img src="https://plus.unsplash.com/premium_photo-1681995206380-babb9b6debc6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full object-cover" />
+          
+          
+          
+          
+          <img src="https://images.pexels.com/photos/1138746/pexels-photo-1138746.jpeg?auto=compress&cs=tinysrgb&w=720&h=480&dpr=2" class="w-full object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto my-16">
+      <div class="glass-card animate-feature-fade">
+        <h3 class="text-xl font-bold text-cyan-400">Patient Records</h3>
+        <p class="text-sm mt-2">Track and manage detailed patient profiles and medical histories.</p>
+      </div>
+      <div class="glass-card animate-feature-fade">
+        <h3 class="text-xl font-bold text-purple-400">Doctor Scheduling</h3>
+        <p class="text-sm mt-2">Assign doctors automatically or manually based on appointment slots.</p>
+      </div>
+      <div class="glass-card animate-feature-fade">
+        <h3 class="text-xl font-bold text-green-400">Real-time Reports</h3>
+        <p class="text-sm mt-2">Dashboard updates for appointments, patient count, and doctor availability.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-center py-6 mt-10">
+    <p class="text-gray-400">&copy; 2025 Hospital Management System. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Carousel animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.getElementById('carousel');
+      let index = 0;
+      setInterval(() => {
+        index = (index + 1) % 3;
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+      }, 4000);
+    });
+  </script>
+</body>
+</html>
