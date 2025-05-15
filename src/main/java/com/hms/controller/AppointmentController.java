@@ -1,12 +1,15 @@
 package com.hms.controller;
 
-import com.hms.entity.Appointment;
-import com.hms.service.AppointmentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import com.hms.entity.Appointment;
+import com.hms.service.AppointmentService;
+
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -16,46 +19,47 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-    // Get all appointments
-    @GetMapping
-    public ResponseEntity<List<Appointment>> getAllAppointments() {
-        List<Appointment> appointments = appointmentService.getAllAppointments();
-        return ResponseEntity.ok(appointments);
+    @PostMapping("/{id}/cancel")
+    @PreAuthorize("hasRole('PATIENT')")
+    public ResponseEntity<Map<String, Object>> cancelAppointment(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Appointment appointment = appointmentService.findById(id);
+            if (appointment == null) {
+                response.put("message", "Appointment not found");
+                response.put("success", false);
+                return ResponseEntity.ok(response);
+            }
+            appointment.setStatus("CANCELED");
+            appointmentService.save(appointment);
+            response.put("message", "Appointment canceled successfully");
+            response.put("success", true);
+        } catch (Exception e) {
+            response.put("message", "Error canceling appointment");
+            response.put("success", false);
+        }
+        return ResponseEntity.ok(response);
     }
 
-    // Create a new appointment
-    @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
-        Appointment savedAppointment = appointmentService.createAppointment(appointment);
-        return ResponseEntity.ok(savedAppointment);
-    }
-
-    // Get appointment by ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Appointment> getAppointmentById(@PathVariable Long id) {
-        return appointmentService.getAppointmentById(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    // Update an appointment
-    @PutMapping("/{id}")
-    public ResponseEntity<Appointment> updateAppointment(@PathVariable Long id, @RequestBody Appointment updatedAppointment) {
-        Appointment appointment = appointmentService.updateAppointment(id, updatedAppointment);
-        return ResponseEntity.ok(appointment);
-    }
-
-    // Delete an appointment
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(@PathVariable Long id) {
-        appointmentService.deleteAppointment(id);
-        return ResponseEntity.ok().build();
-    }
-
-    // Get appointment stats (for dashboard)
-    @GetMapping("/stats")
-    public ResponseEntity<Map<String, Integer>> getAppointmentStats() {
-        Map<String, Integer> stats = appointmentService.getAppointmentStats();
-        return ResponseEntity.ok(stats);
+    @PostMapping("/{id}/complete")
+    @PreAuthorize("hasRole('DOCTOR')")
+    public ResponseEntity<Map<String, Object>> completeAppointment(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            Appointment appointment = appointmentService.findById(id);
+            if (appointment == null) {
+                response.put("message", "Appointment not found");
+                response.put("success", false);
+                return ResponseEntity.ok(response);
+            }
+            appointment.setStatus("COMPLETED");
+            appointmentService.save(appointment);
+            response.put("message", "Appointment marked as completed");
+            response.put("success", true);
+        } catch (Exception e) {
+            response.put("message", "Error completing appointment");
+            response.put("success", false);
+        }
+        return ResponseEntity.ok(response);
     }
 }

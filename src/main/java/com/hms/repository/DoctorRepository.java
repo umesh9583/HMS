@@ -1,10 +1,9 @@
 package com.hms.repository;
 
-import com.hms.entity.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import com.hms.entity.Doctor;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
-    Optional<Doctor> findByMobile(String mobile);
+    Doctor findByUserId(Long userId);
 }

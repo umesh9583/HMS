@@ -1,45 +1,73 @@
 package com.hms.controller;
 
-import com.hms.entity.Patient;
-import com.hms.repository.PatientRepository;
+import com.hms.entity.User;
+import com.hms.service.PatientService;
+import com.hms.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
-@RequestMapping("/api")
 public class AuthController {
 
     @Autowired
-    private PatientRepository patientRepository;
+    private UserService userService;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private PatientService patientService;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        Patient patient = patientRepository.findByMobile(loginRequest.getMobile())
-            .orElseThrow(() -> new RuntimeException("Patient not found"));
+    @PostMapping("/form-login")
+    public ResponseEntity<Map<String, Object>> login(HttpServletRequest request) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String role = request.getParameter("role");
 
-        if ("PATIENT".equals(loginRequest.getRole()) && passwordEncoder.matches(loginRequest.getPassword(), patient.getPassword())) {
-            return ResponseEntity.ok(patient);
+        Map<String, Object> response = new HashMap<>();
+        User user = userService.authenticate(username, password, role);
+
+        if (user != null) {
+            response.put("success", true);
+            response.put("message", "Login successful");
+            response.put("userId", user.getId());
         } else {
-            return ResponseEntity.status(401).build();
+            response.put("success", false);
+            response.put("message", "Invalid username or password");
         }
+        return ResponseEntity.ok(response);
     }
-}
 
-class LoginRequest {
-    private String mobile;
-    private String password;
-    private String role;
+    @PostMapping("/registerPatient")
+    public ResponseEntity<Map<String, Object>> registerPatient(HttpServletRequest request) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            String name = request.getParameter("name");
+            String aadhar = request.getParameter("aadhar_number");
+            String mobile = request.getParameter("mobile");
+            String address = request.getParameter("address");
+            int age = Integer.parseInt(request.getParameter("age"));
+            String bloodGroup = request.getParameter("blood_group");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
 
-    // Getters and setters
-    public String getMobile() { return mobile; }
-    public void setMobile(String mobile) { this.mobile = mobile; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+            boolean registered = patientService.registerPatient(
+                    name, aadhar, mobile, address, age, bloodGroup, username, password
+            );
+
+            if (registered) {
+                response.put("success", true);
+                response.put("message", "Registration successful");
+            } else {
+                response.put("success", false);
+                response.put("message", "Registration failed. Username or Aadhar may already exist.");
+            }
+        } catch (Exception e) {
+            response.put("success", false);
+            response.put("message", "Error: " + e.getMessage());
+        }
+        return ResponseEntity.ok(response);
+    }
 }

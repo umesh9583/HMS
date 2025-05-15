@@ -1,32 +1,34 @@
 package com.hms.controller;
 
-import com.hms.entity.Doctor;
-import com.hms.repository.DoctorRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.hms.entity.Appointment;
+import com.hms.entity.Doctor;
+import com.hms.service.AppointmentService;
+import com.hms.service.DoctorService;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/doctors")
+@RequestMapping("/api/doctor")
 public class DoctorController {
 
     @Autowired
-    private DoctorRepository doctorRepository;
+    private DoctorService doctorService;
 
-    // Get all doctors
-    @GetMapping
-    public ResponseEntity<List<Doctor>> getAllDoctors() {
-        List<Doctor> doctors = doctorRepository.findAll();
-        return ResponseEntity.ok(doctors);
-    }
+    @Autowired
+    private AppointmentService appointmentService;
 
-    // Get a doctor by mobile number
-    @GetMapping("/mobile/{mobile}")
-    public ResponseEntity<Doctor> getDoctorByMobile(@PathVariable String mobile) {
-        Doctor doctor = doctorRepository.findByMobile(mobile)
-            .orElseThrow(() -> new RuntimeException("Doctor not found with mobile: " + mobile));
-        return ResponseEntity.ok(doctor);
+    @GetMapping("/appointments/{userId}")
+    public ResponseEntity<List<Appointment>> getDoctorAppointments(@PathVariable Long userId) {
+        Doctor doctor = doctorService.findByUserId(userId);
+        if (doctor == null) {
+            return ResponseEntity.notFound().build();
+        }
+        List<Appointment> appointments = appointmentService.findByDoctorId(doctor.getId());
+        return ResponseEntity.ok(appointments);
     }
 }

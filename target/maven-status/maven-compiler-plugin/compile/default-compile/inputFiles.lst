@@ -3,9 +3,13 @@ C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\sr
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\repository\AppointmentRepository.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\service\CustomUserDetailsService.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\repository\PatientRepository.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\dto\LoginDto.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\dto\PatientRegistrationDto.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\service\AppointmentService.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\repository\UserRepository.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\entity\Nurse.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\entity\Accountant.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\entity\User.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\service\DoctorService.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\entity\Medicine.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\repository\AccountantRepository.java
@@ -29,9 +33,12 @@ C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\sr
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\config\SecurityConfig.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\controller\AuthController.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\repository\AdminRepository.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\controller\DashboardController.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\controller\WebController.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\service\impl\PatientServiceImpl.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\service\PatientService.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\repository\DoctorRepository.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\entity\Appointment.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\controller\PrescriptionController.java
 C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\controller\AdminController.java
+C:\Users\UMESH CHANDRA\OneDrive\Desktop\My Workspace\HospitalManagementSystem\src\main\java\com\hms\service\UserService.java

@@ -30,18 +30,13 @@ public class PatientDashboardController {
     @Autowired
     private BillRepository billRepository;
 
-    // Get patient profile information
     @GetMapping("/profile/{patientId}")
     public ResponseEntity<Patient> getPatientProfile(@PathVariable Long patientId) {
         Optional<Patient> patient = patientRepository.findById(patientId);
-        if (patient.isPresent()) {
-            return ResponseEntity.ok(patient.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return patient.map(ResponseEntity::ok)
+                      .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Get upcoming appointments for the patient
     @GetMapping("/appointments/upcoming/{patientId}")
     public ResponseEntity<List<Appointment>> getUpcomingAppointments(@PathVariable Long patientId) {
         Optional<Patient> patient = patientRepository.findById(patientId);
@@ -56,7 +51,6 @@ public class PatientDashboardController {
         return ResponseEntity.ok(upcomingAppointments);
     }
 
-    // Get past appointments for the patient
     @GetMapping("/appointments/past/{patientId}")
     public ResponseEntity<List<Appointment>> getPastAppointments(@PathVariable Long patientId) {
         Optional<Patient> patient = patientRepository.findById(patientId);
@@ -70,7 +64,6 @@ public class PatientDashboardController {
         return ResponseEntity.ok(pastAppointments);
     }
 
-    // Get unpaid bills for the patient
     @GetMapping("/bills/unpaid/{patientId}")
     public ResponseEntity<List<Bill>> getUnpaidBills(@PathVariable Long patientId) {
         Optional<Patient> patient = patientRepository.findById(patientId);
@@ -79,12 +72,11 @@ public class PatientDashboardController {
         }
         List<Bill> unpaidBills = billRepository.findAll().stream()
                 .filter(b -> b.getPatient().getId().equals(patientId))
-                .filter(b -> !b.getPaid()) // Fixed from isPaid() to getPaid()
+                .filter(b -> !b.getPaid())
                 .collect(Collectors.toList());
         return ResponseEntity.ok(unpaidBills);
     }
 
-    // Get summary statistics for the dashboard
     @GetMapping("/summary/{patientId}")
     public ResponseEntity<Map<String, Integer>> getDashboardSummary(@PathVariable Long patientId) {
         Optional<Patient> patient = patientRepository.findById(patientId);
@@ -110,7 +102,7 @@ public class PatientDashboardController {
                 .count();
 
         int unpaidBills = (int) bills.stream()
-                .filter(b -> !b.getPaid()) // Fixed from isPaid() to getPaid()
+                .filter(b -> !b.getPaid())
                 .count();
 
         Map<String, Integer> summary = new HashMap<>();

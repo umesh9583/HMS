@@ -6,12 +6,15 @@ com\hms\entity\Appointment.class
 com\hms\controller\AppointmentController.class
 com\hms\controller\BillingController.class
 com\hms\repository\NurseRepository.class
-com\hms\controller\LoginRequest.class
+com\hms\service\UserService.class
+com\hms\controller\DashboardController.class
 com\hms\repository\PrescriptionRepository.class
+com\hms\entity\User.class
 com\hms\HospitalManagementSystemApplication.class
 com\hms\controller\PatientController.class
 com\hms\entity\Pharmacist.class
 com\hms\entity\Patient.class
+com\hms\service\impl\PatientServiceImpl.class
 com\hms\repository\PatientRepository.class
 com\hms\service\AppointmentService.class
 com\hms\controller\PrescriptionController.class
@@ -21,6 +24,8 @@ com\hms\repository\DoctorRepository.class
 com\hms\config\SecurityConfig.class
 com\hms\entity\Bill.class
 com\hms\repository\AppointmentRepository.class
+com\hms\repository\UserRepository.class
+com\hms\dto\LoginDto.class
 com\hms\entity\Medicine.class
 com\hms\service\DoctorService.class
 com\hms\entity\Admin.class
@@ -30,6 +35,7 @@ com\hms\controller\AdminController.class
 com\hms\service\CustomUserDetailsService.class
 com\hms\repository\PharmacistRepository.class
 com\hms\entity\Accountant.class
+com\hms\dto\PatientRegistrationDto.class
 com\hms\repository\BillRepository.class
 com\hms\entity\Prescription.class
 com\hms\controller\MedicineController.class

@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public abstract class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private PatientRepository patientRepository;
@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private AccountantRepository accountantRepository;
 
-    @Override
+    /*@Override
     public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
         // Try to find the user in each repository by mobile or aadharNumber
         Patient patient = patientRepository.findByMobile(identifier)
@@ -89,5 +89,5 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         throw new UsernameNotFoundException("User not found with identifier: " + identifier);
-    }
+    }*/
 }
